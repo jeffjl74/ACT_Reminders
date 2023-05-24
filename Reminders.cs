@@ -148,7 +148,7 @@ namespace ACT_Reminders
 
         void oFormActMain_UpdateCheckClicked()
         {
-            int pluginId = 92;
+            int pluginId = 93;
 
             try
             {
