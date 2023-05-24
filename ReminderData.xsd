@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReminderData" targetNamespace="http://tempuri.org/ReminderData.xsd" xmlns:mstns="http://tempuri.org/ReminderData.xsd" xmlns="http://tempuri.org/ReminderData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReminderData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="ReminderData" msprop:Generator_DataSetName="ReminderData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Player" msprop:Generator_RowEvHandlerName="PlayerRowChangeEventHandler" msprop:Generator_RowDeletedName="PlayerRowDeleted" msprop:Generator_RowDeletingName="PlayerRowDeleting" msprop:Generator_RowEvArgName="PlayerRowChangeEvent" msprop:Generator_TablePropName="Player" msprop:Generator_RowChangedName="PlayerRowChanged" msprop:Generator_RowChangingName="PlayerRowChanging" msprop:Generator_TableClassName="PlayerDataTable" msprop:Generator_RowClassName="PlayerRow" msprop:Generator_TableVarName="tablePlayer" msprop:Generator_UserTableName="Player">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Blink" msprop:Generator_ColumnPropNameInRow="Blink" msprop:Generator_ColumnPropNameInTable="BlinkColumn" msprop:Generator_ColumnVarNameInTable="columnBlink" msprop:Generator_UserColumnName="Blink" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AlertLocX" msprop:Generator_ColumnPropNameInRow="AlertLocX" msprop:Generator_ColumnPropNameInTable="AlertLocXColumn" msprop:Generator_ColumnVarNameInTable="columnAlertLocX" msprop:Generator_UserColumnName="AlertLocX" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
