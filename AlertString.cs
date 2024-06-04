@@ -13,7 +13,7 @@ namespace ACT_Reminders
 
         public enum AlertType { AUDIO, VISUAL }
         public int Length { get { return sb.Length; } }
-        public int Delay = 0;
+        public int Delay = int.MaxValue;
         AlertType m_type;
 
         public AlertString(AlertType type)
@@ -50,6 +50,7 @@ namespace ACT_Reminders
         public StringBuilder Clear()
         {
             sb.Clear();
+            Delay = int.MaxValue;
             return sb;
         }
 

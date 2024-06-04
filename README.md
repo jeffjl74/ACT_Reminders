@@ -2,6 +2,11 @@
 This plugin provides audio and/or visual alerts triggered by in-game events. For example, maybe you want to stop auto-consuming something when you go afk. Or there's a buff you need to remember to cast when you enter an instance. Or a list of things to do when you join a raid.
 
 Reminders are set per player. If the player name is not in the plugin's player list, reminders are not generated.
+
+Version 1.0.1.0
+* Fix overlapping reminders with different delays.
+* Fix different reminders for different characters.
+
 ## Layout
 The plugin consists of two tabs. 
 

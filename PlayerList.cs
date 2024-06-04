@@ -25,5 +25,10 @@ namespace ACT_Reminders
                 return Players.Find(x => x.Name == key);
             }
         }
+
+        public ReminderType GetReminder(int id)
+        {
+            return Reminders.FirstOrDefault(r => r.ID == id);
+        }
     }
 }

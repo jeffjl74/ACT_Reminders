@@ -18,7 +18,7 @@ using System.ComponentModel;
 [assembly: AssemblyTitle("Reminders Plugin")]
 [assembly: AssemblyDescription("An ACT plugin to generate reminders when zoning, joining a raid, etc.")]
 [assembly: AssemblyCompany("Mineeme")]
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
 
 namespace ACT_Reminders
 {
@@ -95,15 +95,21 @@ namespace ACT_Reminders
             {
                 if (activePlayer != null)
                 {
-                    sbAudio.Clear();
-                    sbVisual.Clear();
-
-                    foreach (ReminderType rt in playerList.Reminders)
+                    bool haveAlertString = false;
+                    foreach(AlertData alertData in activePlayer.Alerts)
                     {
-                        if(rt.Use)
+                        ReminderType rt = playerList.GetReminder(alertData.ReminderId);
+                        if(rt != null)
                         {
-                            if(rt.Trigger.Match(logInfo.logLine).Success)
+                            if (rt.Trigger.Match(logInfo.logLine).Success)
                             {
+                                if (!haveAlertString)
+                                {
+                                    sbAudio = new AlertString(AlertString.AlertType.AUDIO);
+                                    sbVisual = new AlertString(AlertString.AlertType.VISUAL);
+                                    haveAlertString = true;
+                                }
+
                                 bool triggered = false;
                                 AlertData ad = activePlayer[rt.ID];
                                 if(ad != null)
@@ -125,7 +131,7 @@ namespace ACT_Reminders
                         }
                     }
 
-                    if(!sbAudio.IsEmpty() || !sbVisual.IsEmpty())
+                    if (haveAlertString && (!sbAudio.IsEmpty() || !sbVisual.IsEmpty()))
                         RunAlerts(sbAudio, sbVisual);
                 }
             }
@@ -413,21 +419,21 @@ namespace ACT_Reminders
         {
             if (!audioData.IsEmpty() && activePlayer != null)
             {
-                audioQ.Enqueue(audioData.ToString());
                 Task.Run(() =>
                 {
                     if (audioData.Delay > 0)
                         Thread.Sleep(audioData.Delay * 1000);
+                    audioQ.Enqueue(audioData.ToString());
                     mUiContext.Post(UiAudio, null);
                 });
             }
             if (!visualData.IsEmpty() && activePlayer != null)
             {
-                visualQ.Enqueue(visualData.ToString());
                 Task.Run(() =>
                 {
                     if (visualData.Delay > 0)
                         Thread.Sleep(visualData.Delay * 1000);
+                    visualQ.Enqueue(visualData.ToString());
                     mUiContext.Post(UiPopup, null);
                 });
             }
